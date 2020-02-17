@@ -1,0 +1,55 @@
+{
+  "name": "graphql-basics",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "heroku-postbuild": "babel src --out-dir dist --copy-files",
+    "dev": "env-cmd -f ./config/dev.env nodemon src/index.js --ext js,graphql --exec babel-node",
+    "test": "env-cmd -f ./config/test.env jest --watch --runInBand",
+    "get-schema": "graphql get-schema -p prisma --dotenv config/dev.env",
+    "deploy-dev": "prisma deploy -e config/dev.env",
+    "deploy-prod": "prisma deploy -e config/prod.env",
+    "deploy-test": "prisma deploy -e config/test.env",
+    "token-prod": "prisma token -e config/prod.env",
+    "token-dev": "prisma token -e config/dev.env",
+    "pretty": "prettier --semi false --print-width 100 --single-quote --trailing-comma all --write \"src/**/*.js\" --write \"src/**/*.scss\""
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "apollo-boost": "^0.4.4",
+    "babel-upgrade": "^1.0.1",
+    "bcryptjs": "^2.4.3",
+    "cross-fetch": "^3.0.4",
+    "env-cmd": "^10.0.1",
+    "graphql": "^14.5.8",
+    "graphql-cli": "^3.0.14",
+    "graphql-yoga": "^1.18.3",
+    "jsonwebtoken": "^8.5.1",
+    "prisma-binding": "^2.1.1"
+  },
+  "jest": {
+    "globalSetup": "./tests/jest/globalSetup.js",
+    "globalTeardown": "./tests/jest/globalTeardown.js", 
+    "setupFilesAfterEnv":["./tests/jest/setupFilesAfterEnv"]
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.7.5",
+    "@babel/core": "^7.7.5",
+    "@babel/node": "^7.7.4",
+    "@babel/plugin-syntax-object-rest-spread": "^7.7.4",
+    "@babel/plugin-transform-runtime": "^7.7.6",
+    "@babel/polyfill": "^7.7.0",
+    "@babel/preset-env": "^7.7.6",
+    "@babel/register": "^7.7.4",
+    "@babel/runtime": "^7.7.6",
+    "babel-core": "7.0.0-bridge.0",
+    "jest": "24.9.0",
+    "nodemon": "^1.17.5",
+    "prettier": "^1.19.1"
+  },
+  "resolutions": {
+    "ansi-styles": "^3.2.0"
+  }
+}

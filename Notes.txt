@@ -1,0 +1,12 @@
+make better prisma commands
+update Redux
+
+React dev server http://localhost:8080/
+http://localhost:8081/
+
+GraphQL Frontend http://localhost:4000/
+GraphQL backend http://localhost:4466/
+
+
+Adding new pages:
+Add components to AppRouter
