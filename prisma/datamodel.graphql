@@ -4,5 +4,15 @@ type User {
   createdAt: DateTime! @createdAt
   name: String!
   email: String! @unique
-  loginPassword: String!
+  password: String!
+  posts: [Post!]! 
+    @relation(name: "PostToUser", onDelete: SET_NULL, link: INLINE)
+}
+
+type Post {
+  id: ID! @id
+  title: String!
+  body: String!
+  published: Boolean!
+  author: User! @relation(name: "PostToUser")
 }

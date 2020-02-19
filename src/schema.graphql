@@ -3,6 +3,8 @@
 type Query {
     users(query: String, first: Int, skip: Int, after: String, orderBy: UserOrderByInput): [User!]!
     me: User!
+    posts(query: String, first: Int, skip: Int, after: String, orderBy: PostOrderByInput): [Post!]!
+    myPosts(query: String, first: Int, skip: Int, after: String, orderBy: PostOrderByInput): [Post!]!
 }
 
 type Mutation {
@@ -10,6 +12,9 @@ type Mutation {
     loginUser(data: LoginUserInput!): AuthPayload!
     deleteUser: User!
     updateUser(data: UpdateUserInput!): User!
+    createPost(data: CreatePostInput!): Post!
+    deletePost(id: ID!): Post!
+    updatePost(id: ID!, data: UpdatePostInput!): Post!
 }
 
 type AuthPayload {
@@ -37,6 +42,18 @@ input LoginUserInput {
     loginPassword: String!
 }
 
+input CreatePostInput {
+    title: String!
+    body: String!
+    published: Boolean!
+    author: ID!
+}
+
+input UpdatePostInput {
+    title: String
+    body: String
+    published: Boolean
+}
 
 type User {
     id: ID!
@@ -46,7 +63,6 @@ type User {
     updatedAt: String!
     createdAt: String!
 }
-
 
 enum MutationType {
     CREATED

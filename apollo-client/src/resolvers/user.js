@@ -23,7 +23,7 @@ const _MutateCreateUser = (name, email, loginPassword) => {
       mutation: createUser(name, email, loginPassword),
     })
     .then(response => {
-      localStorage.setItem('token', response.data.createUser.token)
+      storeToken('token', response.data.createUser.token)
     })
     .catch(response => {
       console.log(response)
