@@ -27,12 +27,16 @@
     "graphql-cli": "^3.0.14",
     "graphql-yoga": "^1.18.3",
     "jsonwebtoken": "^8.5.1",
-    "prisma-binding": "^2.1.1"
+    "prisma-binding": "^2.1.1",
+    "react-redux": "^7.2.0",
+    "redux": "^4.0.5"
   },
   "jest": {
     "globalSetup": "./tests/jest/globalSetup.js",
-    "globalTeardown": "./tests/jest/globalTeardown.js", 
-    "setupFilesAfterEnv":["./tests/jest/setupFilesAfterEnv"]
+    "globalTeardown": "./tests/jest/globalTeardown.js",
+    "setupFilesAfterEnv": [
+      "./tests/jest/setupFilesAfterEnv"
+    ]
   },
   "devDependencies": {
     "@babel/cli": "^7.7.5",
