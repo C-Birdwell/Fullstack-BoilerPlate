@@ -1,22 +1,26 @@
 import React from 'react'
-import ApolloBoost, { gql } from 'apollo-boost'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
+import { Helmet } from 'react-helmet'
 
 import { _flagNewUser } from '../actions'
 import FormLogin from '../components/FormLogin'
 import FormCreateUser from '../components/FormCreateUser'
 
 class DashboardPage extends React.Component {
-  componentDidMount() {
-    const token = localStorage.getItem('token')
-    console.log(token)
+  renderHead() {
+    return (
+      <Helmet>
+        <title>Boilerplate - Dashboard Page</title>
+      </Helmet>
+    )
   }
 
   render() {
     const { _flagNewUser, flagNewUser } = this.props
     return (
       <div>
+        {this.renderHead()}
         <div>
           {!flagNewUser ? <FormLogin /> : <FormCreateUser />}
           <button onClick={() => _flagNewUser(!flagNewUser)}>New User?</button>
