@@ -1,0 +1,13 @@
+.row {
+  flex-direction: row;
+}
+
+@for $i from 1 through 100 {
+  .col-#{$i} {
+    flex: $i;
+  }
+}
+
+.center {
+  justify-content: center;
+}
