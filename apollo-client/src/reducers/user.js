@@ -1,7 +1,14 @@
-import { USERS, CREATE_USER_USERNAME, CREATE_USER_PASSWORD, CREATE_USER_EMAIL } from '../typeDefs'
+import {
+  USERS,
+  USER_ID,
+  CREATE_USER_USERNAME,
+  CREATE_USER_PASSWORD,
+  CREATE_USER_EMAIL,
+} from '../typeDefs'
 
 const INITIAL_STATE = {
   users: [],
+  userID: '',
   createUserUsername: '',
   createUserPassword: '',
   createUserEmail: '',
@@ -11,6 +18,9 @@ export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case USERS:
       return { ...state, users: action.payload }
+
+    case USER_ID:
+      return { ...state, userID: action.payload }
 
     case CREATE_USER_USERNAME:
       return { ...state, createUserUsername: action.payload }

@@ -5,12 +5,12 @@ import hashPassword from '../utils/hashPassword'
 
 const Mutation = {
   async createUser(parent, { data }, { prisma }, info) {
-    const loginPassword = await hashPassword(data.loginPassword)
+    const password = await hashPassword(data.password)
 
     const user = await prisma.mutation.createUser({
       data: {
         ...data,
-        loginPassword,
+        password,
       },
     })
     const token = generateToken(user.id)
@@ -34,7 +34,7 @@ const Mutation = {
     )
   },
 
-  async loginUser(parent, args, { prisma }, info) {
+  async login(parent, args, { prisma }, info) {
     const user = await prisma.query.user({
       where: {
         email: args.data.email,
@@ -46,7 +46,7 @@ const Mutation = {
     }
     const token = generateToken(user.id)
 
-    const isMatch = await bcrypt.compare(args.data.loginPassword, user.loginPassword)
+    const isMatch = await bcrypt.compare(args.data.password, user.password)
 
     if (!isMatch) {
       throw new Error('Unable to login')
@@ -61,8 +61,8 @@ const Mutation = {
   async updateUser(parent, args, { prisma, request }, info) {
     const userId = getUserId(request)
 
-    if (typeof args.data.loginPassword === 'string') {
-      args.data.loginPassword = await hashPassword(args.data.loginPassword)
+    if (typeof args.data.password === 'string') {
+      args.data.password = await hashPassword(args.data.password)
     }
 
     return prisma.mutation.updateUser(

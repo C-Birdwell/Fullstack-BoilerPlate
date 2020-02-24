@@ -2,8 +2,8 @@ const getFirstName = fullName => {
   return fullName.split(' ')[0]
 }
 
-const isValidPassword = loginPassword => {
-  return loginPassword.length >= 8 && !loginPassword.toLowerCase().includes('loginPassword')
+const isValidPassword = password => {
+  return password.length >= 8 && !password.toLowerCase().includes('password')
 }
 
 export { getFirstName, isValidPassword }

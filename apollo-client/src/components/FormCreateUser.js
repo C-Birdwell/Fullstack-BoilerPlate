@@ -47,6 +47,7 @@ class FormCreateUser extends React.Component {
 }
 
 const mapStateToProps = state => ({
+  userID: state.user.userID,
   createUserUsername: state.user.createUserUsername,
   createUserPassword: state.user.createUserPassword,
   createUserEmail: state.user.createUserEmail,
