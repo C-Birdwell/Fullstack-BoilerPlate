@@ -10,9 +10,9 @@ import {
 const INITIAL_STATE = {
   users: [],
   userID: '',
-  createUserUsername: 'test111',
+  createUserUsername: 'test2',
   createUserPassword: 'password123',
-  createUserEmail: 'test111@testt.com',
+  createUserEmail: 'test2@testt.com',
   loggedUser: {},
 }
 

@@ -1,7 +1,7 @@
 import { LOGIN_EMAIL, LOGIN_PASSWORD } from '../typeDefs'
 
 const INITIAL_STATE = {
-  loginEmail: 'test11@testt.com',
+  loginEmail: 'test111@testt.com',
   loginPassword: 'password123',
 }
 
