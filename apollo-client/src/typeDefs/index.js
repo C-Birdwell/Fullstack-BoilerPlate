@@ -1,5 +1,6 @@
 export const USERS = 'users'
 export const USER_ID = 'user_id'
+export const LOGGED_USER = 'logged_user'
 export const LOGIN_EMAIL = 'login_email'
 export const LOGIN_PASSWORD = 'login_password'
 export const CREATE_USER_USERNAME = 'create_user_username'

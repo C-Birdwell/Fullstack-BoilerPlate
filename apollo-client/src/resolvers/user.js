@@ -1,14 +1,13 @@
 import { gql } from 'apollo-boost'
 
 import client from '../client'
-import { storeToken } from '../utils'
 
-const _MutateCreateUser = (name, email, loginPassword) => {
-  const createUser = (name, email, loginPassword) => gql`
+const _MutateCreateUser = (name, email, password, func) => {
+  const createUser = (name, email, password) => gql`
   mutation {
-    createUser(data: { name: ${JSON.stringify(name)}, email: ${JSON.stringify(
+    createUser( data: { name: ${JSON.stringify(name)}, email: ${JSON.stringify(
     email,
-  )}, loginPassword: ${JSON.stringify(loginPassword)} }) {
+  )}, password: ${JSON.stringify(password)}}) {
       user {
         id
         name
@@ -21,10 +20,12 @@ const _MutateCreateUser = (name, email, loginPassword) => {
 
   client
     .mutate({
-      mutation: createUser(name, email, loginPassword),
+      mutation: createUser(name, email, password),
     })
     .then(response => {
-      storeToken('token', response.data.createUser.token)
+      // localStorage.setItem('token', JSON.stringify(response.data.createUser.token))
+      // func(response.data.createUser.user)
+      console.log(response.data)
     })
     .catch(response => {
       console.log(response)

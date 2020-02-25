@@ -1,6 +1,7 @@
 import {
   USERS,
   USER_ID,
+  LOGGED_USER,
   CREATE_USER_USERNAME,
   CREATE_USER_PASSWORD,
   CREATE_USER_EMAIL,
@@ -9,9 +10,10 @@ import {
 const INITIAL_STATE = {
   users: [],
   userID: '',
-  createUserUsername: '',
-  createUserPassword: '',
-  createUserEmail: '',
+  createUserUsername: 'test111',
+  createUserPassword: 'password123',
+  createUserEmail: 'test111@testt.com',
+  loggedUser: {},
 }
 
 export default (state = INITIAL_STATE, action) => {
@@ -30,6 +32,9 @@ export default (state = INITIAL_STATE, action) => {
 
     case CREATE_USER_EMAIL:
       return { ...state, createUserEmail: action.payload }
+
+    case LOGGED_USER:
+      return { ...state, loggedUser: action.payload }
 
     default:
       return { ...state }

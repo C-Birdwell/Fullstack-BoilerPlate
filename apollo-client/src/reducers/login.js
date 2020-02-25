@@ -1,8 +1,8 @@
 import { LOGIN_EMAIL, LOGIN_PASSWORD } from '../typeDefs'
 
 const INITIAL_STATE = {
-  loginEmail: '',
-  loginPassword: '',
+  loginEmail: 'test11@testt.com',
+  loginPassword: 'password123',
 }
 
 export default (state = INITIAL_STATE, action) => {

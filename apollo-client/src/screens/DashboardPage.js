@@ -8,6 +8,10 @@ import FormLogin from '../components/FormLogin'
 import FormCreateUser from '../components/FormCreateUser'
 
 class DashboardPage extends React.Component {
+  componentDidMount() {
+    console.log('React', localStorage.getItem('token'))
+  }
+
   renderHead() {
     return (
       <Helmet>

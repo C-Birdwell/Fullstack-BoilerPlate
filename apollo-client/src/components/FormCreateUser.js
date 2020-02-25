@@ -2,7 +2,12 @@ import React from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
-import { _createUserUsername, _createUserPassword, _createUserEmail } from '../actions'
+import {
+  _createUserUsername,
+  _createUserPassword,
+  _createUserEmail,
+  _getLoggedUser,
+} from '../actions'
 import { _MutateCreateUser } from '../resolvers'
 
 class FormCreateUser extends React.Component {
@@ -11,6 +16,7 @@ class FormCreateUser extends React.Component {
       _createUserUsername,
       _createUserPassword,
       _createUserEmail,
+      _getLoggedUser,
       createUserUsername,
       createUserPassword,
       createUserEmail,
@@ -37,7 +43,14 @@ class FormCreateUser extends React.Component {
           placeholder="Email"
         />
         <button
-          onClick={() => _MutateCreateUser(createUserUsername, createUserEmail, createUserPassword)}
+          onClick={() =>
+            _MutateCreateUser(
+              createUserUsername,
+              createUserEmail,
+              createUserPassword,
+              _getLoggedUser,
+            )
+          }
         >
           Create New User
         </button>
@@ -51,10 +64,14 @@ const mapStateToProps = state => ({
   createUserUsername: state.user.createUserUsername,
   createUserPassword: state.user.createUserPassword,
   createUserEmail: state.user.createUserEmail,
+  loggedUser: state.user.loggedUser,
 })
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ _createUserUsername, _createUserPassword }, dispatch)
+  return bindActionCreators(
+    { _createUserUsername, _createUserPassword, _createUserEmail, _getLoggedUser },
+    dispatch,
+  )
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(FormCreateUser)
