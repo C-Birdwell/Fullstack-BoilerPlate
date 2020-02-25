@@ -13,7 +13,7 @@ const INITIAL_STATE = {
   createUserUsername: 'test2',
   createUserPassword: 'password123',
   createUserEmail: 'test2@testt.com',
-  loggedUser: {},
+  loggedUser: false,
 }
 
 export default (state = INITIAL_STATE, action) => {
