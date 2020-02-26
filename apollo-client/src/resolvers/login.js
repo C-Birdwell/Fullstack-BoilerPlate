@@ -23,6 +23,7 @@ const _MutationLogIn = (email, password, func) => {
     .then(response => {
       localStorage.setItem('token', JSON.stringify(response.data.login.token))
       func(response.data.login.user)
+      console.log(response.data.login.token)
     })
 }
 
